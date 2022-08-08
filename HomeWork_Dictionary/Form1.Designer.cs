@@ -37,6 +37,7 @@ namespace HomeWork_Dictionary
             this.comboBoxTo = new System.Windows.Forms.ComboBox();
             this.labelFrom = new System.Windows.Forms.Label();
             this.labelTo = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // richTextBoxFrom
@@ -123,11 +124,22 @@ namespace HomeWork_Dictionary
             this.labelTo.TabIndex = 7;
             this.labelTo.Text = "На:";
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(506, 439);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 8;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 474);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelTo);
             this.Controls.Add(this.labelFrom);
             this.Controls.Add(this.comboBoxTo);
@@ -154,6 +166,7 @@ namespace HomeWork_Dictionary
         private System.Windows.Forms.ComboBox comboBoxTo;
         private System.Windows.Forms.Label labelFrom;
         private System.Windows.Forms.Label labelTo;
+        private System.Windows.Forms.Button buttonAdd;
     }
 }
 

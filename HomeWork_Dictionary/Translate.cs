@@ -4,46 +4,51 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace HomeWork_Dictionary
 {
-   public static class Translate
+   public  class Translate
     {
-        public static Dictionary<string, string> dictionaryRuEn { get; set; } = new Dictionary<string, string>();
-        public static Dictionary<string, string> dictionaryRuDe { get; set; } = new Dictionary<string, string>();
-        public static void SaveRuEn()
+        public Dictionary<string, string> dictionaryRuEn { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> dictionaryRuDe { get; set; } = new Dictionary<string, string>();
+
+        public  void SaveRuEn()
         {
             var strRuEn = JsonSerializer.Serialize(dictionaryRuEn);
             File.WriteAllText("dictionaryRuEn.json", strRuEn);
         }
-        public static void SaveRuDe()
+        public  void SaveRuDe()
         {
             var strRuDe = JsonSerializer.Serialize(dictionaryRuDe);
             File.WriteAllText("dictionaryRuDe.json", strRuDe);
         }
 
-        public static void LoadRuEn()
+        public  void LoadRuEn()
         {
             var jsonRuEn = File.ReadAllText("dictionaryRuEn.json");
             dictionaryRuEn = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonRuEn);
         }
-        public static void LoadRuDe()
+        public  void LoadRuDe()
         {
             var jsonRuDe = File.ReadAllText("dictionaryRuDe.json");
             dictionaryRuDe = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonRuDe);
         }
 
-        public static string TransRuEn(string line)
+        public string TransRuEn(string line)
         {
            LoadRuEn();
+            ListBox listBoxRu = new ListBox();
+
+            //dictionaryRuEn.Add(listBoxRu.);
             return dictionaryRuEn[line];
         }
-        public static string TransRuDe(string line)
+        public  string TransRuDe(string line)
         {
            LoadRuDe();
             return dictionaryRuDe[line];
         }
-        //public static Dictionary<string, string> dictionaryRuEn = new Dictionary<string, string>
+        //public  Dictionary<string, string> dictionaryRuEn = new Dictionary<string, string>
         //{
         //    ["привет"] = "hello",
         //    ["пока"] = "good Bye",
@@ -90,7 +95,8 @@ namespace HomeWork_Dictionary
         //    ["square"] = "площадь"
 
         //};
-        //public static Dictionary<string, string> dictionaryRuDe = new Dictionary<string, string>
+        
+        //public  Dictionary<string, string> dictionaryRuDe = new Dictionary<string, string>
         //{
         //    ["привет"] = "hallo",
         //    ["пока"] = "tschüss",
