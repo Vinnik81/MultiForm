@@ -28,12 +28,7 @@ namespace HomeWork_Dictionary
                 "Немецкий" });
             form2 = new Form2();
         }
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            //Translate.SaveRuEn();
-            //Translate.SaveRuDe();
-            //base.OnClosing(e);
-        }
+       
 
         private void buttonSwitch_Click(object sender, EventArgs e)
         {
@@ -49,14 +44,14 @@ namespace HomeWork_Dictionary
                 var translate = richTextBoxFrom.TextLength;
                 if (translate != 0)
                 {
-                    //if (comboBoxFrom.Text == "Русский" && comboBoxTo.Text == "Английский")
-                    //    richTextBoxTo.Text = Translate.TransRuEn(richTextBoxFrom.Text);
-                    //else if (comboBoxFrom.Text == "Английский" && comboBoxTo.Text == "Русский")
-                    //    richTextBoxTo.Text = Translate.TransRuEn(richTextBoxFrom.Text);
-                    //else if (comboBoxFrom.Text == "Русский" && comboBoxTo.Text == "Немецкий")
-                    //    richTextBoxTo.Text = Translate.TransRuDe(richTextBoxFrom.Text);
-                    //else if (comboBoxFrom.Text == "Немецкий" && comboBoxTo.Text == "Русский")
-                    //    richTextBoxTo.Text = Translate.TransRuDe(richTextBoxFrom.Text);
+                    if (comboBoxFrom.Text == "Русский" && comboBoxTo.Text == "Английский")
+                        richTextBoxTo.Text = Translate.TransRuEn(richTextBoxFrom.Text);
+                    else if (comboBoxFrom.Text == "Английский" && comboBoxTo.Text == "Русский")
+                        richTextBoxTo.Text = Translate.TransRuEn(richTextBoxFrom.Text);
+                    else if (comboBoxFrom.Text == "Русский" && comboBoxTo.Text == "Немецкий")
+                        richTextBoxTo.Text = Translate.TransRuDe(richTextBoxFrom.Text);
+                    else if (comboBoxFrom.Text == "Немецкий" && comboBoxTo.Text == "Русский")
+                        richTextBoxTo.Text = Translate.TransRuDe(richTextBoxFrom.Text);
                 }
                 else MessageBox.Show("Вы не ввели слова для перевода!!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

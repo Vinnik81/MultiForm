@@ -5,50 +5,50 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace HomeWork_Dictionary
 {
-   public  class Translate
+   public static class Translate
     {
-        public Dictionary<string, string> dictionaryRuEn { get; set; } = new Dictionary<string, string>();
-        public Dictionary<string, string> dictionaryRuDe { get; set; } = new Dictionary<string, string>();
+       static Form2 form2 = new Form2();
+        public static Dictionary<string, string> dictionaryRuEn { get; set; } = new Dictionary<string, string>();
+        public static Dictionary<string, string> dictionaryRuDe { get; set; } = new Dictionary<string, string>();
+        
 
-        public  void SaveRuEn()
-        {
-            var strRuEn = JsonSerializer.Serialize(dictionaryRuEn);
-            File.WriteAllText("dictionaryRuEn.json", strRuEn);
-        }
-        public  void SaveRuDe()
-        {
-            var strRuDe = JsonSerializer.Serialize(dictionaryRuDe);
-            File.WriteAllText("dictionaryRuDe.json", strRuDe);
-        }
+        
+       
 
-        public  void LoadRuEn()
+        public static void LoadRuEn()
         {
             var jsonRuEn = File.ReadAllText("dictionaryRuEn.json");
             dictionaryRuEn = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonRuEn);
         }
-        public  void LoadRuDe()
+        public static void LoadRuDe()
         {
             var jsonRuDe = File.ReadAllText("dictionaryRuDe.json");
             dictionaryRuDe = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonRuDe);
         }
 
-        public string TransRuEn(string line)
+        public static string TransRuEn(string line)
         {
            LoadRuEn();
-            ListBox listBoxRu = new ListBox();
-
-            //dictionaryRuEn.Add(listBoxRu.);
+            ListBox listBoxFrom = new ListBox();
+            
+            //if (listBoxFrom.Text == "Русский")
+            //dictionaryRuEn.Add(form2.listBoxRu.Text, form2.listBoxEn.Text);
+            //dictionaryRuEn.Add(form2.listBoxEn.Text, form2.listBoxRu.Text);
             return dictionaryRuEn[line];
         }
-        public  string TransRuDe(string line)
+        public static string TransRuDe(string line)
         {
            LoadRuDe();
+           
             return dictionaryRuDe[line];
         }
-        //public  Dictionary<string, string> dictionaryRuEn = new Dictionary<string, string>
+
+        
+       
         //{
         //    ["привет"] = "hello",
         //    ["пока"] = "good Bye",
@@ -95,7 +95,7 @@ namespace HomeWork_Dictionary
         //    ["square"] = "площадь"
 
         //};
-        
+
         //public  Dictionary<string, string> dictionaryRuDe = new Dictionary<string, string>
         //{
         //    ["привет"] = "hallo",

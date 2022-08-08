@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace HomeWork_Dictionary
 {
     public partial class Form2 : Form
     {
+        public  Dictionary<string, string> dictionaryRuEn { get; set; } = new Dictionary<string, string>();
+        public  Dictionary<string, string> dictionaryRuDe { get; set; } = new Dictionary<string, string>();
         public Form2()
         {
             InitializeComponent();
         }
+
+       
 
         private void textBoxRu_TextChanged(object sender, EventArgs e)
         {
@@ -37,11 +43,27 @@ namespace HomeWork_Dictionary
                 listBoxDe.Items.Add(textBoxDe.Text);
                 listBoxEn.Items.Add(textBoxEn.Text);
                 listBoxRu.Items.Add(textBoxRu.Text);
+                SaveRuEn();
+                SaveRuDe();
                 textBoxRu.Text = "";
                 textBoxEn.Text = "";
                 textBoxDe.Text = "";
                 textBoxRu.Focus();
             }
+        }
+                public void SaveRuEn()
+                {
+                    dictionaryRuEn.Add(listBoxRu.Text, listBoxEn.Text);
+                    //dictionaryRuEn.Add(listBoxEn.Text, listBoxRu.Text);
+                    var strRuEn = JsonSerializer.Serialize(dictionaryRuEn);
+                    File.WriteAllText("dictionaryRuEn.json", strRuEn);
+                }
+        public void SaveRuDe()
+        {
+            dictionaryRuDe.Add(listBoxRu.Items.ToString(), listBoxDe.Items.ToString());
+            //dictionaryRuDe.Add(listBoxDe.Text, listBoxRu.Text);
+            var strRuDe = JsonSerializer.Serialize(dictionaryRuDe);
+            File.WriteAllText("dictionaryRuDe.json", strRuDe);
         }
     }
 }
