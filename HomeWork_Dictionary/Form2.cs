@@ -19,7 +19,12 @@ namespace HomeWork_Dictionary
             InitializeComponent();
         }
 
-       
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            SaveRuEn();
+            SaveRuDe();
+            base.OnClosing(e);
+        }
 
         private void textBoxRu_TextChanged(object sender, EventArgs e)
         {
@@ -43,8 +48,6 @@ namespace HomeWork_Dictionary
                 listBoxDe.Items.Add(textBoxDe.Text);
                 listBoxEn.Items.Add(textBoxEn.Text);
                 listBoxRu.Items.Add(textBoxRu.Text);
-                SaveRuEn();
-                SaveRuDe();
                 textBoxRu.Text = "";
                 textBoxEn.Text = "";
                 textBoxDe.Text = "";
@@ -53,7 +56,7 @@ namespace HomeWork_Dictionary
         }
                 public void SaveRuEn()
                 {
-                    dictionaryRuEn.Add(listBoxRu.Text, listBoxEn.Text);
+                    dictionaryRuEn.Add(listBoxRu.Items.ToString(), listBoxEn.Items.ToString());
                     //dictionaryRuEn.Add(listBoxEn.Text, listBoxRu.Text);
                     var strRuEn = JsonSerializer.Serialize(dictionaryRuEn);
                     File.WriteAllText("dictionaryRuEn.json", strRuEn);
