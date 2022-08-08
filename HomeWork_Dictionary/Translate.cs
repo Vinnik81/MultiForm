@@ -35,12 +35,12 @@ namespace HomeWork_Dictionary
 
         public static string TransRuEn(string line)
         {
-           LoadRuEn();
+            LoadRuEn();
             return dictionaryRuEn[line];
         }
         public static string TransRuDe(string line)
         {
-           LoadRuDe();
+            LoadRuDe();
             return dictionaryRuDe[line];
         }
         //public static Dictionary<string, string> dictionaryRuEn = new Dictionary<string, string>
